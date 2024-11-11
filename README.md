@@ -7,7 +7,7 @@ Include a summary of the project and details of the implementation.
 ## Team
  
 - Mohamed Elansari [me2209852@student.qu.edu.qa]
-- Fane Doe [fd0000003@student.qu.edu.qa]
+- Khaled Qarawi [kq2203776@student.qu.edu.qa]
 - Sane Doe [sd0000002@student.qu.edu.qa]
 - Zane Doe [zd0000004@student.qu.edu.qa]
  
