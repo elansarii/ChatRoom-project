@@ -8,8 +8,8 @@ Include a summary of the project and details of the implementation.
  
 - Mohamed Elansari [me2209852@student.qu.edu.qa]
 - Khaled Qarawi [kq2203776@student.qu.edu.qa]
-- Sane Doe [sd0000002@student.qu.edu.qa]
-- Zane Doe [zd0000004@student.qu.edu.qa]
+- Faisal Almalk [fa2203280@student.qu.edu.qa]
+- Abdulrahman Shabban [as2204435@student.qu.edu.qa]
  
 ## Challenges
  
