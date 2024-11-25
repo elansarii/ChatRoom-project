@@ -46,4 +46,4 @@ Include a summary of the project and details of the implementation.
 ## References
  
 - [Linux start sshd](https://www.cyberciti.biz/faq/linux-start-sshd-openssh-server-command/) used to know how to start an sshd server
-- [guide title](https://example.com/guide) used for what task or purpose
+- [Mosh org](https://mosh.org/) Understanding what mosh is and how it works
