@@ -27,14 +27,9 @@ Include a summary of the project and details of the implementation.
  
 | Member |       Date | Description |
 | :----- | ---------: | :---------- |
-| Zane   | 2024-11-05 |             |
-| Dane   | 2024-11-05 |             |
-| Fane   | 2024-11-07 |             |
-| Dane   | 2024-11-18 |             |
-| Zane   | 2024-11-20 |             |
-| Sane   | 2024-11-25 |             |
-| Sane   | 2024-11-30 |             |
-| ...    |            |             |
+| Mohmaed| 2024-11-25 | Created the check install script            |
+| Mohamed   | 2024-11-25 |  Created the password gen script           |
+
  
 ## References
  
