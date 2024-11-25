@@ -30,7 +30,7 @@ Include a summary of the project and details of the implementation.
 | Mohmaed| 2024-11-25 | Created the check install script            |
 | Mohamed   | 2024-11-25 |  Created the password gen script           |
 | Mohamed   | 2024-11-25 |  Created the create user script         |
-| John   | 2024-11-25 |  Bla Bla Bla           |
+| Mohmaed   | 2024-11-25 |  Created the config-sshd functionality           |
 | John   | 2024-11-25 |  Bla Bla Bla           |
 | John   | 2024-11-25 |  Bla Bla Bla           |
 
@@ -40,5 +40,5 @@ Include a summary of the project and details of the implementation.
  
 ## References
  
-- [article title](https://example.com/article) used for what task or purpose
+- [Linux start sshd](https://www.cyberciti.biz/faq/linux-start-sshd-openssh-server-command/) used to know how to start an sshd server
 - [guide title](https://example.com/guide) used for what task or purpose
