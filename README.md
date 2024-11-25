@@ -32,7 +32,7 @@ Include a summary of the project and details of the implementation.
 | Mohamed   | 2024-11-25 |  Created the create user script         |
 | Mohmaed   | 2024-11-25 |  Created the config-sshd functionality           |
 | Mohamed   | 2024-11-25 |  Created the mobile shell scripts           |
-| John   | 2024-11-25 |  Bla Bla Bla           |
+| Mohamed   | 2024-11-25 |  Created the ngnix web server           |
 | John   | 2024-11-25 |  Bla Bla Bla           |
 | John   | 2024-11-25 |  Bla Bla Bla           |
 | John   | 2024-11-25 |  Bla Bla Bla           |
@@ -47,3 +47,4 @@ Include a summary of the project and details of the implementation.
  
 - [Linux start sshd](https://www.cyberciti.biz/faq/linux-start-sshd-openssh-server-command/) used to know how to start an sshd server
 - [Mosh org](https://mosh.org/) Understanding what mosh is and how it works
+- [Nginx guide](https://nginx.org/en/docs/beginners_guide.html) used this guide to lear more about nginx
