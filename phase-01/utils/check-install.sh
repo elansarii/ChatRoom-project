@@ -1,19 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 
-check_install() {
-    local command="$1"
-    local package="$2"
+# utils/check-install.sh
 
-    if ! command -v "$command" &> /dev/null; then
-        echo "Installing $package to provide $command..."
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <command> <package>"
+    exit 1
+fi
 
-        if command -v dnf &> /dev/null; then
-            su -c "dnf install -y $package"
-        else
-            echo "You are using an unsupported package manager, Use (dnf) please"
-            exit 1
-        fi
-    fi
-}
+command="$1"
+package="$2"
 
-check_install "$1" "$2"
+if ! command -v "$command" >/dev/null 2>&1; then
+    echo "Command '$command' not found. Installing package '$package'."
+    dnf install -y "$package"
+else
+    echo "Command '$command' is already installed."
+fi
