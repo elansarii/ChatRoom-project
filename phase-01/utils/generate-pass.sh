@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
-source "$(dirname "$0")/check-install.sh"
+# utils/generate-pass.sh
 
-check_install pwgen pwgen
+./check-install.sh pwgen pwgen
 
-pwgen -s 16 1
+# Generate and print a secure password
+pwgen -s 12 1
