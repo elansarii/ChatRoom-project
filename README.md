@@ -31,8 +31,13 @@ Include a summary of the project and details of the implementation.
 | Mohamed   | 2024-11-25 |  Created the password gen script           |
 | Mohamed   | 2024-11-25 |  Created the create user script         |
 | Mohmaed   | 2024-11-25 |  Created the config-sshd functionality           |
+| Mohamed   | 2024-11-25 |  Created the mobile shell scripts           |
 | John   | 2024-11-25 |  Bla Bla Bla           |
 | John   | 2024-11-25 |  Bla Bla Bla           |
+| John   | 2024-11-25 |  Bla Bla Bla           |
+| John   | 2024-11-25 |  Bla Bla Bla           |
+| John   | 2024-11-25 |  Bla Bla Bla           |
+
 
 
 
