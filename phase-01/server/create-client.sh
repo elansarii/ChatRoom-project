@@ -1,38 +1,49 @@
 #!/bin/bash
 
-source "$(dirname "$0")/../utils/generate-pass.sh"
-source "$(dirname "$0")/../utils/check-install.sh"
+# server/create-client.sh
 
 create_user() {
-    local username="$1"
-    local fullname="$2"
+    username="$1"
+    fullname="$2"
 
-    local password=$(generate-pass.sh)
+    if id "$username" &>/dev/null; then
+        echo "User '$username' already exists."
+    else
+        # Generate password
+        password=$(../utils/generate-pass.sh)
+        
+        # Create user with home directory and full name
+        useradd -m -c "$fullname" "$username"
 
-    # Check if group exists, create if not
-    if ! getent group clients &> /dev/null; then
-        su -c "groupadd clients"
+        # Set password for user
+        echo -e "$password\n$password" | passwd "$username"
+
+        echo "User '$username' created with password: $password"
     fi
 
-    if ! id "$username" &> /dev/null; then
-
-        su -c "useradd -m -c \"$fullname\" -g clients -G wheel \"$username\""
+    # Create group 'clients' if it doesn't exist
+    if ! getent group clients >/dev/null; then
+        groupadd clients
+        echo "Group 'clients' created."
+    else
+        echo "Group 'clients' already exists."
     fi
 
-    echo -e "$password\n$password" | su -c "passwd $username"
-
-    echo "Username: $username"
-    echo "Password: $password"
+    # Add user to 'clients' and 'wheel' groups
+    usermod -aG clients,wheel "$username"
+    echo "User '$username' added to groups 'clients' and 'wheel'."
 }
 
+# Check arguments
 if [ $# -ne 2 ]; then
     echo "Usage: $0 <username> <full name>"
     exit 1
 fi
 
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root"
-   exit 1
-fi
+username="$1"
+fullname="$2"
 
-create_user "$1" "$2"
+create_user "$username" "$fullname"
+
+# Call config-site.sh to set up website directory
+./config-site.sh "$username"
