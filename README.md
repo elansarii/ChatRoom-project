@@ -34,7 +34,7 @@ Include a summary of the project and details of the implementation.
 | Mohamed   | 2024-11-25 |  Created the mobile shell scripts           |
 | Mohamed   | 2024-11-25 |  Created the ngnix web server           |
 | Mohamed   | 2024-11-25 |  Created the client website creation           |
-| John   | 2024-11-25 |  Bla Bla Bla           |
+| Faisal   | 2024-11-27 |  Finished client remote testing           |
 
 
 
