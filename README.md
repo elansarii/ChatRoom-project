@@ -37,6 +37,7 @@ Include a summary of the project and details of the implementation.
 | Faisal   | 2024-11-27 |  Finished client remote testing           |
 | Faisal   | 2024-11-28 |  Finished client create key script		|
 | Faisal   | 2024-11-28 |  Some modification to some of the files created earlier	|
+| Faisal   | 2024-11-28 |  Added setup-auth.sh	|
 
 
 
@@ -51,9 +52,8 @@ Include a summary of the project and details of the implementation.
 - [Nginx guide](https://nginx.org/en/docs/beginners_guide.html) used this guide to lear more about nginx.
 - [Add users](https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/)
 - [Grep guide](https://stackoverflow.com/questions/10358547/how-to-grep-for-contents-after-pattern) Used to take part of the config file.
-- [Take user input](https://www.unixtutorial.org/how-to-generate-ed25519-ssh-key/)
 - [Generate SSH Keys](https://www.unixtutorial.org/how-to-generate-ed25519-ssh-key/)
 - [Redirect to /dev/null](https://unix.stackexchange.com/questions/119648/redirecting-to-dev-null) Used to redirect both stdout and stderror to /dev/null
 - [Fix problem with scripts](https://askubuntu.com/questions/74780/how-to-execute-a-script-in-a-different-directory-than-the-current-one) Fixed a problem where calling a script didn't change working directory to script location.
 - [Check command status](https://askubuntu.com/questions/29370/how-to-check-if-a-command-succeeded) Check command exit status within the script.
-
+- [Upload SSH key](https://stackoverflow.com/questions/18690691/how-to-add-a-ssh-key-to-remote-server) Upload the public key of client user to SSH server
