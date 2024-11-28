@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd "$(dirname "$0")"
 # server/create-client.sh
 
 create_user() {
