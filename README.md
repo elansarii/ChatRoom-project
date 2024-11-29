@@ -38,7 +38,8 @@ Include a summary of the project and details of the implementation.
 | Faisal   | 2024-11-28 |  Finished client create key script		|
 | Faisal   | 2024-11-28 |  Some modification to some of the files created earlier	|
 | Faisal   | 2024-11-28 |  Added setup-auth.sh	|
-
+| Abdulrahman | 2024-11-29 | Added the script for test-web.sh |
+| Abdulrahman | 2024-11-29 | Added the script for inti-site.sh |
 
 
 
@@ -57,3 +58,6 @@ Include a summary of the project and details of the implementation.
 - [Fix problem with scripts](https://askubuntu.com/questions/74780/how-to-execute-a-script-in-a-different-directory-than-the-current-one) Fixed a problem where calling a script didn't change working directory to script location.
 - [Check command status](https://askubuntu.com/questions/29370/how-to-check-if-a-command-succeeded) Check command exit status within the script.
 - [Upload SSH key](https://stackoverflow.com/questions/18690691/how-to-add-a-ssh-key-to-remote-server) Upload the public key of client user to SSH server
+- [Curl guide](https://curl.se/docs/manual.html) Understanding curl and using it to check server availability.
+- [W3m manual](https://linux.die.net/man/1/w3m) Guidance for using w3m to load webpages.
+- [Hugo Quick start](https://gohugo.io/getting-started/quick-start/) Used to initialize the Hugo website.
