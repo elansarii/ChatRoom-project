@@ -39,7 +39,7 @@ Include a summary of the project and details of the implementation.
 | Faisal   | 2024-11-28 |  Some modification to some of the files created earlier	|
 | Faisal   | 2024-11-28 |  Added setup-auth.sh	|
 | Abdulrahman | 2024-11-29 | Added the script for test-web.sh |
-| Abdulrahman | 2024-11-29 | Added the script for inti-site.sh |
+| Abdulrahman | 2024-11-29 | Added the script for init-site.sh |
 
 
 
