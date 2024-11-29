@@ -60,4 +60,4 @@ Include a summary of the project and details of the implementation.
 - [Upload SSH key](https://stackoverflow.com/questions/18690691/how-to-add-a-ssh-key-to-remote-server) Upload the public key of client user to SSH server
 - [Curl guide](https://curl.se/docs/manual.html) Understanding curl and using it to check server availability.
 - [W3m manual](https://linux.die.net/man/1/w3m) Guidance for using w3m to load webpages.
-- [Hugo Quick start](https://gohugo.io/getting-started/quick-start/) Used to initialize the Hugo website.
+- [Hugo Quick start](https://gohugo.io/getting-started/quick-start/) Used to initialize and build the Hugo site.
