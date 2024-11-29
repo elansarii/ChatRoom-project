@@ -40,6 +40,8 @@ Include a summary of the project and details of the implementation.
 | Faisal   | 2024-11-28 |  Added setup-auth.sh	|
 | Abdulrahman | 2024-11-29 | Added the script for test-web.sh |
 | Abdulrahman | 2024-11-29 | Added the script for init-site.sh |
+| khaled | 2024-11-29 | Added the script for exec-map.sh |
+
 
 
 
