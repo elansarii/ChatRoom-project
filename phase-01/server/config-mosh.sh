@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# server/config-mosh.sh
-
 # Install Mosh
 ../utils/check-install.sh mosh mosh
 

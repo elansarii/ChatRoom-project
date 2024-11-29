@@ -1,13 +1,7 @@
-<<<<<<< Updated upstream
 #!/bin/bash
 cd "$(dirname "$0")"
-# utils/check-install.sh
-
-=======
-#!/bin/sh
 
 #make sure that there are two arguments passed
->>>>>>> Stashed changes
 if [ $# -ne 2 ]; then
     echo "Wrong input. Expected input: $0 <command> <package>"
     exit 1
