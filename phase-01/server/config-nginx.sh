@@ -15,7 +15,7 @@ firewall-cmd --permanent --add-service=http
 firewall-cmd --reload
 
 # Test server with cURL
-curl_output=$(curl -I http://localhost)
+output=$(curl -I http://localhost)
 
 echo "Testing NGINX server:"
-echo "$curl_output"
+echo "$output"
