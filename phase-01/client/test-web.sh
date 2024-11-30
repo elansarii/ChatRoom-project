@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
 #Check that curl is installed
 ./utils/check-install.sh curl curl
 #Check thhat w3m is installed

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
 ../utils/check-install.sh nmap nmap
 ../utils/check-install.sh ip ip
 

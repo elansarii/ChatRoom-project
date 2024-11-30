@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
 # Set the server hostname and run other setup scripts
 CSV_FILE="config/server.csv"
 SERVER_HOSTNAME=$(awk -F',' '{print $4}' $CSV_FILE)

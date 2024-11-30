@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
 # Install OpenSSH Client
 ../utils/check-install.sh ssh openssh-client
 

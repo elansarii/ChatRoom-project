@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd "$(dirname "$0")"
 # Check if Fastfetch is installed
 if ! command -v fastfetch &> /dev/null
 then

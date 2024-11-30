@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
 # Check if Hugo is installed
 ./utils/check-install.sh hugo hugo
 

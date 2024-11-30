@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd "$(dirname "$0")"
 # Install Mosh
 ../utils/check-install.sh mosh mosh
 

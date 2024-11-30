@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd "$(dirname "$0")"
 # call the check install script to install sshd if it is not installed
 ../utils/check-install.sh sshd openssh-server
 # Enable server

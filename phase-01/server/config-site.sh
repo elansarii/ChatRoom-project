@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd "$(dirname "$0")"
 # server/config-site.sh
 
 # Check for username argument

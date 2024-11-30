@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd "$(dirname "$0")"
 # Set up the client based on the CSV file
 CSV_FILE="config/clients.csv"
 while IFS=',' read -r username fullname email hostname ipaddress
