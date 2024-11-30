@@ -4,8 +4,10 @@ cd "$(dirname "$0")"
 # Check if Hugo is installed
 ./utils/check-install.sh hugo hugo
 
+username=$1
+
 # Define the site directory
-SITE_DIR=~/site
+SITE_DIR=/home/$username/site
 
 # Check if the site directory already exists
 if [ -d "$SITE_DIR" ]; then

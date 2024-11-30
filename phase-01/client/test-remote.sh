@@ -1,6 +1,8 @@
 #!/bin/bash
-
 cd "$(dirname "$0")"
+SERVER_CSV="../config/server.csv"
+SERVER_IP=$(awk -F',' '{print $5}' $SERVER_CSV)
+username=$1
 # Install OpenSSH Client
 ../utils/check-install.sh ssh openssh-client
 
@@ -8,12 +10,18 @@ cd "$(dirname "$0")"
 ../utils/check-install.sh mosh mosh
 
 # Connect to the ssh server
-ip_address=$(grep 'server_ip=' ../config.conf | sed 's/^.*\=//')
-
-ssh_output=$(ssh -F /dev/null -l $USER $ip_address)
 echo "Testing connectivity to server via ssh"
-echo "$ssh_output"
+if [[ $(nc -w 5 "$SERVER_IP" 22 <<< "\0" ) =~ "OpenSSH" ]] ; then
+	echo "SSH Connectivity to $SERVER_IP is successful"
+else
+	echo "SSH Connectivity to $SERVER_IP is failed"
+fi
 
-mosh_output=$(mosh $ip_address)
+
 echo "Testing connectivity to server via mosh"
-echo "$mosh_output"
+# I don't know how to test mosh properly
+if mosh --ssh="ssh -o BatchMode=yes" "$username@$SERVER_IP" --no-init; then
+	echo "mosh Connectivity to $SERVER_IP is successful"
+else
+	echo "mosh Connectivity to $SERVER_IP is failed"
+fi
