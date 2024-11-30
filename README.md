@@ -67,3 +67,5 @@ Include a summary of the project and details of the implementation.
 - [W3m manual](https://linux.die.net/man/1/w3m) Guidance for using w3m to load webpages.
 - [Hugo Quick start](https://gohugo.io/getting-started/quick-start/) Used to initialize and build the Hugo site.
 - [Rsync command guide](https://linuxize.com/post/how-to-use-rsync-for-local-and-remote-data-transfer-and-synchronization/) Command guide to using rsync for synchronization.
+- [Fastfetch repo](https://github.com/fastfetch-cli/fastfetch) Documentation and repo of fastfetch
+
