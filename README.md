@@ -3,6 +3,7 @@
 ## Phase 1
 
 This phase was deticated to implementing shell scripts to configure both a server and new incoming users. The configuration is done automatically through running the client.sh and server.sh scripts. 
+
 In the process configuring and performing the following: 
 - Checking for each package used if it's installed and installing it
 - Creating a client
