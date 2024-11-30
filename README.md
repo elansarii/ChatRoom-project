@@ -13,15 +13,14 @@ Include a summary of the project and details of the implementation.
  
 ## Challenges
  
-1. Challenge #1 with details
-2. Challenge #2 with details
-3. ...
+1. Learning new tools
+2. Getting used to shell scripting syntax
+3. Using git in the CLI
  
 ## Issues
  
-1. Issue #1 with details
-2. Issue #2 with details
-3. ...
+1. Installing Fedora server
+2. 
  
 ## Contributions
  
