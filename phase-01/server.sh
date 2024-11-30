@@ -5,6 +5,7 @@ cd "$(dirname "$0")"
 CSV_FILE="config/server.csv"
 SERVER_HOSTNAME=$(awk -F',' '{print $4}' $CSV_FILE)
 SERVER_IP=$(awk -F',' '{print $5}' $CSV_FILE)
+CLIENTS_CSV="config/clients.csv"
 
 # Set the hostname
 echo "Setting hostname to $SERVER_HOSTNAME"
@@ -15,8 +16,8 @@ echo "Setting up the server..."
 ./server/config-sshd.sh
 ./server/config-mosh.sh
 ./server/config-nginx.sh
-./server/create-client.sh
-./server/config-site.sh
+
+awk -F, '{ system("./server/create-client.sh \"" $1 "\" \"" $2 "\""); }' "$CLIENTS_CSV"
 
 # Display system information
 ./utils/fetch-info.sh $SERVER_IP

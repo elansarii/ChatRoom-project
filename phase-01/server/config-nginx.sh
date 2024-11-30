@@ -6,13 +6,13 @@ cd "$(dirname "$0")"
 ../utils/check-install.sh nginx nginx
 
 # Enable and start nginx service
-systemctl enable nginx
-systemctl start nginx
-systemctl status nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+sudo systemctl status nginx
 
 # Add firewall rules
-firewall-cmd --permanent --add-service=http
-firewall-cmd --reload
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --reload
 
 # Test server with cURL
 output=$(curl -I http://localhost)

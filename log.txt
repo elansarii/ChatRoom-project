@@ -1,0 +1,131 @@
+Setting hostname to server
+Setting up the server...
+Command 'sshd' is already installed.
+● sshd.service - OpenSSH server daemon
+     Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled)
+    Drop-In: /usr/lib/systemd/system/service.d
+             └─10-timeout-abort.conf
+     Active: active (running) since Sat 2024-11-30 20:21:48 +03; 3min 7s ago
+ Invocation: 3ea77f7489ab41ba8fc09f5ba55a575e
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 5107 (sshd)
+      Tasks: 1 (limit: 4589)
+     Memory: 1M (peak: 1.1M)
+        CPU: 10ms
+     CGroup: /system.slice/sshd.service
+             └─5107 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+
+Nov 30 20:21:48 server systemd[1]: Starting sshd.service - OpenSSH server daemon...
+Nov 30 20:21:48 server (sshd)[5107]: sshd.service: Referenced but unset environment variable evaluates to an empty string: OPTIONS
+Nov 30 20:21:48 server sshd[5107]: Server listening on 0.0.0.0 port 22.
+Nov 30 20:21:48 server sshd[5107]: Server listening on :: port 22.
+Nov 30 20:21:48 server systemd[1]: Started sshd.service - OpenSSH server daemon.
+Warning: ALREADY_ENABLED: ssh
+success
+success
+SSH server configured. Only clients group memeber can access
+Command 'mosh' is already installed.
+Warning: ALREADY_ENABLED: mosh
+success
+success
+Mosh service installed and firewall configured.
+Command 'nginx' is already installed.
+● nginx.service - The nginx HTTP and reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/system/service.d
+             └─10-timeout-abort.conf
+     Active: active (running) since Sat 2024-11-30 18:17:19 +03; 2h 7min ago
+ Invocation: 120feec0ba814d618c458d1cc657b240
+   Main PID: 1172 (nginx)
+      Tasks: 5 (limit: 4589)
+     Memory: 6.9M (peak: 7.4M)
+        CPU: 83ms
+     CGroup: /system.slice/nginx.service
+             ├─1172 "nginx: master process /usr/sbin/nginx"
+             ├─1173 "nginx: worker process"
+             ├─1174 "nginx: worker process"
+             ├─1175 "nginx: worker process"
+             └─1176 "nginx: worker process"
+
+Nov 30 18:17:19 server systemd[1]: Starting nginx.service - The nginx HTTP and reverse proxy server...
+Nov 30 18:17:19 server nginx[1148]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+Nov 30 18:17:19 server nginx[1148]: nginx: configuration file /etc/nginx/nginx.conf test is successful
+Nov 30 18:17:19 server systemd[1]: Started nginx.service - The nginx HTTP and reverse proxy server.
+Warning: ALREADY_ENABLED: http
+success
+success
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0  8474    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+Testing NGINX server:
+HTTP/1.1 200 OK
+Server: nginx/1.26.2
+Date: Sat, 30 Nov 2024 17:24:59 GMT
+Content-Type: text/html
+Content-Length: 8474
+Last-Modified: Mon, 20 Feb 2023 17:42:39 GMT
+Connection: keep-alive
+ETag: "63f3b10f-211a"
+Accept-Ranges: bytes
+
+User 'client1' already exists.
+Group 'clients' already exists.
+User 'client1' added to groups 'clients' and 'wheel'.
+Site directory created at /home/client1/site
+Symbolic link created at /usr/share/nginx/html/client1 pointing to /home/client1/site
+Permissions set to allow NGINX to read /home/client1/site
+mkdir: cannot create directory ‘/home/client1/site’: File exists
+Site directory created at /home/client1/site
+Symbolic link created at /usr/share/nginx/html/client1 pointing to /home/client1/site
+Permissions set to allow NGINX to read /home/client1/site
+User 'client2' already exists.
+Group 'clients' already exists.
+User 'client2' added to groups 'clients' and 'wheel'.
+Site directory created at /home/client2/site
+Symbolic link created at /usr/share/nginx/html/client2 pointing to /home/client2/site
+Permissions set to allow NGINX to read /home/client2/site
+mkdir: cannot create directory ‘/home/client2/site’: File exists
+Site directory created at /home/client2/site
+Symbolic link created at /usr/share/nginx/html/client2 pointing to /home/client2/site
+Permissions set to allow NGINX to read /home/client2/site
+Displaying system information...
+             .',;::::;,'.
+         .';:cccccccccccc:;,.
+      .;cccccccccccccccccccccc;.
+    .:cccccccccccccccccccccccccc:.
+  .;ccccccccccccc;.:dddl:.;ccccccc;.
+ .:ccccccccccccc;OWMKOOXMWd;ccccccc:.
+.:ccccccccccccc;KMMc;cc;xMMc;ccccccc:.
+,cccccccccccccc;MMM.;cc;;WW:;cccccccc,
+:cccccccccccccc;MMM.;cccccccccccccccc:
+:ccccccc;oxOOOo;MMM000k.;cccccccccccc:
+cccccc;0MMKxdd:;MMMkddc.;cccccccccccc;
+ccccc;XMO';cccc;MMM.;cccccccccccccccc'
+ccccc;MMo;ccccc;MMW.;ccccccccccccccc;
+ccccc;0MNc.ccc.xMMd;ccccccccccccccc;
+cccccc;dNMWXXXWM0:;cccccccccccccc:,
+cccccccc;.:odl:.;cccccccccccccc:,.
+ccccccccccccccccccccccccccccc:'.
+:ccccccccccccccccccccccc:;,..
+ ':cccccccccccccccc::;,.[1G[18A[42Cserver@server
+[42C-------------
+[42COS: Fedora Linux 41 (Server Edition) x86_64
+[42CHost: VMware Virtual Platform
+[42CKernel: Linux 6.11.4-301.fc41.x86_64
+[42CUptime: 2 hours, 7 mins
+[42CPackages: 801 (rpm)
+[42CShell: bash 5.2.32
+[42CDisplay (Virtual-1): 1280x800 @ 60 Hz
+[42CTerminal: /dev/tty1
+[42CTerminal Font: eurlatgr
+[42CCPU: Intel(R) Core(TM) i5-7600K (4) @ 3.79 GHz
+[42CGPU: VMware SVGA II Adapter
+[42CMemory: 593.58 MiB / 3.77 GiB (15%)
+[42CSwap: 0 B / 3.77 GiB (0%)
+[42CDisk (/): 2.28 GiB / 14.94 GiB (15%) - xfs
+[42CLocal IP (ens160): 192.168.100.45/24
+[42CLocale: en_US.UTF-8
+[42C
+[42C[40m   [41m   [42m   [43m   [44m   [45m   [46m   [47m   [m
+[42C[5m[100m   [101m   [102m   [103m   [104m   [105m   [106m   [107m   [m

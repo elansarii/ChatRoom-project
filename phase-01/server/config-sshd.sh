@@ -12,18 +12,18 @@ systemctl status sshd
 # Configure sshd_config
 sshd_config="/etc/ssh/sshd_config"
 
-sed -i 's/^#Subsystem sftp .*/Subsystem sftp internal-sftp/' "$sshd_config"
+sudo sed -i 's/^#Subsystem sftp .*/Subsystem sftp internal-sftp/' "$sshd_config"
 
 # Check if access to ssh is restricted, if not add restiction
-if ! grep -q '^AllowGroups clients' "$sshd_config"; then
-    echo "AllowGroups clients" | tee -a "$sshd_config"
+if ! sudo grep -q '^AllowGroups clients' "$sshd_config"; then
+    echo "AllowGroups clients" | sudo tee -a "$sshd_config"
 fi
 
 # Restart sshd service, to apply changes
 systemctl restart sshd
 
 # Add firewall rules, and reload to apply changes
-firewall-cmd --permanent --add-service=ssh
-firewall-cmd --reload
+sudo firewall-cmd --permanent --add-service=ssh
+sudo firewall-cmd --reload
 
 echo "SSH server configured. Only clients group memeber can access"

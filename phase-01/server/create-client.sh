@@ -13,7 +13,7 @@ create_user() {
         password=$(../utils/generate-pass.sh)
         
         # Create user with home directory and full name
-        useradd -m -c "$fullname" "$username"
+        sudo useradd -m -c "$fullname" "$username"
 
         # Set password for user
         echo -e "$password\n$password" | passwd "$username"
@@ -23,14 +23,14 @@ create_user() {
 
     # Create group 'clients' if it doesn't exist
     if ! getent group clients >/dev/null; then
-        groupadd clients
+        sudo groupadd clients
         echo "Group 'clients' created."
     else
         echo "Group 'clients' already exists."
     fi
 
     # Add user to 'clients' and 'wheel' groups
-    usermod -aG clients,wheel "$username"
+    sudo usermod -aG clients,wheel "$username"
     echo "User '$username' added to groups 'clients' and 'wheel'."
 }
 
