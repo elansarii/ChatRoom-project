@@ -1,0 +1,126 @@
+Setting hostname for client to client
+Setting up client client...
+Running test-remote.sh
+Command 'ssh' is already installed.
+Command 'mosh' is already installed.
+Testing connectivity to server via ssh
+SSH Connectivity to 192.168.100.45 is successful
+Testing connectivity to server via mosh
+client@192.168.100.45: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).
+/usr/bin/mosh: Did not find mosh server startup message. (Have you installed mosh on your server?)
+mosh Connectivity to 192.168.100.45 is failed
+Running create-keys.sh
+The user already has a key
+Running setup-auth.sh
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "keys/client.ssh.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+
+/usr/bin/ssh-copy-id: WARNING: All keys were skipped because they already exist on the remote system.
+		(if you think this is a mistake, you may want to use -f option)
+
+Public key for user client successfully copied to server 192.168.100.45
+Running exec-map.sh
+Command 'nmap' is already installed.
+Command 'ip' is already installed.
+Scanning the network 192.168.100.0/24...
+Starting Nmap 7.92 ( https://nmap.org ) at 2024-11-30 23:52 +03
+Nmap scan report for _gateway (192.168.100.1)
+Host is up (0.0031s latency).
+Nmap scan report for 192.168.100.3
+Host is up (0.0029s latency).
+Nmap scan report for 192.168.100.9
+Host is up (0.0028s latency).
+Nmap scan report for 192.168.100.45
+Host is up (0.0045s latency).
+Nmap scan report for 192.168.100.46
+Host is up (0.039s latency).
+Nmap scan report for client (192.168.100.51)
+Host is up (0.00056s latency).
+Nmap scan report for 192.168.100.74
+Host is up (0.0023s latency).
+Nmap scan report for 192.168.100.93
+Host is up (0.0029s latency).
+Nmap scan report for 192.168.100.126
+Host is up (0.0027s latency).
+Nmap scan report for 192.168.100.130
+Host is up (0.0025s latency).
+Nmap scan report for 192.168.100.147
+Host is up (0.087s latency).
+Nmap scan report for 192.168.100.156
+Host is up (0.011s latency).
+Nmap scan report for 192.168.100.181
+Host is up (0.089s latency).
+Nmap scan report for 192.168.100.199
+Host is up (0.0092s latency).
+Nmap scan report for 192.168.100.200
+Host is up (0.010s latency).
+Nmap done: 256 IP addresses (15 hosts up) scanned in 2.47 seconds
+Running test-web.sh
+./client/test-web.sh: line 9: ./utils/check-install.sh: No such file or directory
+./client/test-web.sh: line 11: ./utils/check-install.sh: No such file or directory
+./client/test-web.sh: line 15: dev/null: No such file or directory
+Web server is not accessible. Check configuration.
+Running init-site.sh
+./client/init-site.sh: line 5: ./utils/check-install.sh: No such file or directory
+Creating a new Hugo site at /home/client/site...
+./client/init-site.sh: line 20: hugo: command not found
+./client/init-site.sh: line 23: cd: /home/client/site: No such file or directory
+Initializing a Git repository...
+Reinitialized existing Git repository in /home/client/team-argon/phase-01/client/.git/
+Adding Hugo theme as a Git submodule...
+fatal: detected dubious ownership in repository at '/home/client/team-argon/phase-01/client'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /home/client/team-argon/phase-01/client
+Configuring the theme in Hugo...
+Hugo site initialized successfully at /home/client/site.
+Running publish-site.sh
+./client.sh: line 29: ./client/publish-site.sh: cannot execute: required file not found
+Running ./utils/fetch-info.sh
+Displaying system information...
+             .',;::::;,'.
+         .';:cccccccccccc:;,.
+      .;cccccccccccccccccccccc;.
+    .:cccccccccccccccccccccccccc:.
+  .;ccccccccccccc;.:dddl:.;ccccccc;.
+ .:ccccccccccccc;OWMKOOXMWd;ccccccc:.
+.:ccccccccccccc;KMMc;cc;xMMc;ccccccc:.
+,cccccccccccccc;MMM.;cc;;WW:;cccccccc,
+:cccccccccccccc;MMM.;cccccccccccccccc:
+:ccccccc;oxOOOo;MMM000k.;cccccccccccc:
+cccccc;0MMKxdd:;MMMkddc.;cccccccccccc;
+ccccc;XMO';cccc;MMM.;cccccccccccccccc'
+ccccc;MMo;ccccc;MMW.;ccccccccccccccc;
+ccccc;0MNc.ccc.xMMd;ccccccccccccccc;
+cccccc;dNMWXXXWM0:;cccccccccccccc:,
+cccccccc;.:odl:.;cccccccccccccc:,.
+ccccccccccccccccccccccccccccc:'.
+:ccccccccccccccccccccccc:;,..
+ ':cccccccccccccccc::;,.[1G[18A[42Cclient@client
+[42C-------------
+[42COS: Fedora Linux 41 (Workstation Edition) x86_64
+[42CHost: VirtualBox (1.2)
+[42CKernel: Linux 6.11.4-301.fc41.x86_64
+[42CUptime: 1 hour, 45 mins
+[42CPackages: 2078 (rpm)
+[42CShell: bash 5.2.32
+[42CDisplay (Virtual-1): 1920x946 @ 60 Hz
+[42CDE: GNOME 47.0
+[42CWM: Mutter (Wayland)
+[42CWM Theme: Adwaita
+[42CTheme: Adwaita [GTK2/3/4]
+[42CIcons: Adwaita [GTK2/3/4]
+[42CFont: Cantarell (11pt) [GTK2/3/4]
+[42CCursor: Adwaita (24px)
+[42CTerminal: Ptyxis 47.2
+[42CTerminal Font: Source Code Pro (10pt)
+[42CCPU: Intel(R) Core(TM) i7-7500U @ 2.90 GHz
+[42CGPU: VMware SVGA II Adapter
+[42CMemory: 1.49 GiB / 3.82 GiB (39%)
+[42CSwap: 0 B / 3.82 GiB (0%)
+[42CDisk (/): 3.90 GiB / 18.97 GiB (21%) - btrfs
+[42CLocal IP (enp0s3): 192.168.100.51/24
+[42CLocale: en_US.UTF-8
+[42C
+[42C[40m   [41m   [42m   [43m   [44m   [45m   [46m   [47m   [m
+[42C[100m   [101m   [102m   [103m   [104m   [105m   [106m   [107m   [m

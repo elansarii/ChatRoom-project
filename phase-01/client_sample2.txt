@@ -1,0 +1,119 @@
+Setting hostname for client to client
+Setting up client client...
+Running test-remote.sh
+Command 'ssh' is already installed.
+Command 'mosh' is already installed.
+Testing connectivity to server via ssh
+SSH Connectivity to 192.168.100.45 is successful
+Testing connectivity to server via mosh
+client@192.168.100.45: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).
+mosh Connectivity to 192.168.100.45 is failed
+Running create-keys.sh
+Generating an ssh key
+The public key generated is:
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE4rwEM0xKd95aSDp5egkRv/q6NJ80kwoYiEjwMIbHyr client
+The private key generated is:
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABAQqpIE1G
+Is10dElQsFKdXYAAAAGAAAAAEAAAAzAAAAC3NzaC1lZDI1NTE5AAAAIE4rwEM0xKd95aSD
+p5egkRv/q6NJ80kwoYiEjwMIbHyrAAAAkDcW4G5JbrIeLQeqsdjU0hSJHH4R4DacRJn8pI
+fzdUs3ay88mHn20KBzzquMDza6ki8XPqyLIypQyqradyA8py+I4FshiWyuiHvXNpVvF6R1
+ECJ903YS1nDm+RxpQHVkeNW4V9IUcoSenwdMxK5XrRPwMLndghB3eVPGggwGoMww7hIeSz
+CFRJzn0YB68PWKzw==
+-----END OPENSSH PRIVATE KEY-----
+Running setup-auth.sh
+An error occured while trying to copy public key for username client to server 192.168.100.45
+Running exec-map.sh
+Command 'nmap' is already installed.
+Command 'ip' is already installed.
+Scanning the network 192.168.100.0/24...
+Starting Nmap 7.92 ( https://nmap.org ) at 2024-11-30 23:55 +03
+Nmap scan report for _gateway (192.168.100.1)
+Host is up (0.0059s latency).
+Nmap scan report for 192.168.100.3
+Host is up (0.0058s latency).
+Nmap scan report for 192.168.100.9
+Host is up (0.0057s latency).
+Nmap scan report for 192.168.100.45
+Host is up (0.0049s latency).
+Nmap scan report for 192.168.100.46
+Host is up (0.079s latency).
+Nmap scan report for client (192.168.100.51)
+Host is up (0.0058s latency).
+Nmap scan report for 192.168.100.74
+Host is up (0.0049s latency).
+Nmap scan report for 192.168.100.93
+Host is up (0.0028s latency).
+Nmap scan report for 192.168.100.126
+Host is up (0.0094s latency).
+Nmap scan report for 192.168.100.130
+Host is up (0.0092s latency).
+Nmap scan report for 192.168.100.147
+Host is up (0.065s latency).
+Nmap scan report for 192.168.100.156
+Host is up (0.026s latency).
+Nmap scan report for 192.168.100.181
+Host is up (0.036s latency).
+Nmap scan report for 192.168.100.199
+Host is up (0.080s latency).
+Nmap scan report for 192.168.100.200
+Host is up (0.080s latency).
+Nmap done: 256 IP addresses (15 hosts up) scanned in 4.57 seconds
+Running test-web.sh
+Web server is not accessible. Check configuration.
+Running init-site.sh
+Creating a new Hugo site at /home/client/site...
+Initializing a Git repository...
+Reinitialized existing Git repository in /home/client/team-argon/phase-01/client/.git/
+Adding Hugo theme as a Git submodule...
+Configuring the theme in Hugo...
+Hugo site initialized successfully at /home/client/site.
+Running publish-site.sh
+Running ./utils/fetch-info.sh
+Displaying system information...
+             .',;::::;,'.
+         .';:cccccccccccc:;,.
+      .;cccccccccccccccccccccc;.
+    .:cccccccccccccccccccccccccc:.
+  .;ccccccccccccc;.:dddl:.;ccccccc;.
+ .:ccccccccccccc;OWMKOOXMWd;ccccccc:.
+.:ccccccccccccc;KMMc;cc;xMMc;ccccccc:.
+,cccccccccccccc;MMM.;cc;;WW:;cccccccc,
+:cccccccccccccc;MMM.;cccccccccccccccc:
+:ccccccc;oxOOOo;MMM000k.;cccccccccccc:
+cccccc;0MMKxdd:;MMMkddc.;cccccccccccc;
+ccccc;XMO';cccc;MMM.;cccccccccccccccc'
+ccccc;MMo;ccccc;MMW.;ccccccccccccccc;
+ccccc;0MNc.ccc.xMMd;ccccccccccccccc;
+cccccc;dNMWXXXWM0:;cccccccccccccc:,
+cccccccc;.:odl:.;cccccccccccccc:,.
+ccccccccccccccccccccccccccccc:'.
+:ccccccccccccccccccccccc:;,..
+ ':cccccccccccccccc::;,.[1G[18A[42Cclient@client
+[42C-------------
+[42COS: Fedora Linux 41 (Workstation Edition) x86_64
+[42CHost: VirtualBox (1.2)
+[42CKernel: Linux 6.11.4-301.fc41.x86_64
+[42CUptime: 1 hour, 49 mins
+[42CPackages: 2078 (rpm)
+[42CShell: bash 5.2.32
+[42CDisplay (Virtual-1): 1920x946 @ 60 Hz
+[42CDE: GNOME 47.0
+[42CWM: Mutter (Wayland)
+[42CWM Theme: Adwaita
+[42CTheme: Adwaita [GTK2/3/4]
+[42CIcons: Adwaita [GTK2/3/4]
+[42CFont: Cantarell (11pt) [GTK2/3/4]
+[42CCursor: Adwaita (24px)
+[42CTerminal: Ptyxis 47.2
+[42CTerminal Font: Source Code Pro (10pt)
+[42CCPU: Intel(R) Core(TM) i7-7500U @ 2.90 GHz
+[42CGPU: VMware SVGA II Adapter
+[42CMemory: 1.48 GiB / 3.82 GiB (39%)
+[42CSwap: 0 B / 3.82 GiB (0%)
+[42CDisk (/): 3.90 GiB / 18.97 GiB (21%) - btrfs
+[42CLocal IP (enp0s3): 192.168.100.51/24
+[42CLocale: en_US.UTF-8
+[42C
+[42C[40m   [41m   [42m   [43m   [44m   [45m   [46m   [47m   [m
+[42C[100m   [101m   [102m   [103m   [104m   [105m   [106m   [107m   [m
