@@ -42,6 +42,8 @@ Include a summary of the project and details of the implementation.
 | khaled | 2024-11-29 | Added the script for exec-map.sh |
 | Abdulrahman | 2024-11-29 | Added the script for site building and snchronization |
 | khaled | 2024-11-30 | Added the script for fetch-info.sh |
+| khaled | 2024-11-30 | Added the script for server.sh |
+| khaled | 2024-11-30 | Added the script for client.sh |
 
 
 
