@@ -80,4 +80,8 @@ In the process configuring and performing the following:
 - [Hugo Quick start](https://gohugo.io/getting-started/quick-start/) Used to initialize and build the Hugo site.
 - [Rsync command guide](https://linuxize.com/post/how-to-use-rsync-for-local-and-remote-data-transfer-and-synchronization/) Command guide to using rsync for synchronization.
 - [Fastfetch repo](https://github.com/fastfetch-cli/fastfetch) Documentation and repo of fastfetch
+https://stackoverflow.com/questions/20389799/using-output-of-awk-to-run-command
+https://stackoverflow.com/questions/13322485/how-to-get-the-primary-ip-address-of-the-local-machine-on-linux-and-os-x
+https://stackoverflow.com/questions/34360943/check-if-ssh-connection-is-possible-when-it-needs-a-password?rq=3
+https://mosh.org/
 
