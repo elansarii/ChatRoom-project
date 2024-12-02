@@ -1,10 +1,10 @@
 #!/bin/bash
-
+cd "$(dirname "$0")"
 # Check if Hugo is installed
-./utils/check-install.sh hugo hugo
+../utils/check-install.sh hugo hugo
 
 # Check if rsync is installed
-./utils/check-install.sh rsync rsync
+../utils/check-install.sh rsync rsync
 
 # Define variables
 SERVER_CSV="../config/server.csv"
