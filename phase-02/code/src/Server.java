@@ -13,6 +13,7 @@ public class Server {
     public static synchronized String getCounter() {
         return String.valueOf(ticketCounter++);
     }
+
     public static synchronized void loadTickets() {
         try (BufferedReader br = new BufferedReader(new FileReader(User.TICKET_FILE))) {
             String line;
