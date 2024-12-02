@@ -47,7 +47,24 @@ public class User implements Runnable {
         }
     }
 
+    private void handleIdentification() throws IOException {
+        sendMessage("Please enter your ticket or pseudonym:");
 
+        String input = in.readLine();
+
+        if (Server.findTicket(input) == null) {
+            String currentTicket = generate(Server.getCounter());
+            Server.tickets.put(input, currentTicket);
+            Server.addUser(this);
+            saveTicket(ticket);
+            sendMessage("Ticket generated: " + ticket + " and associated with pseudonym: " + pseudonym);
+
+        } else {
+            pseudonym = Server.getUserByTicket(ticket).getPseudonym();
+            sendMessage("Welcome back, " + pseudonym);
+
+        }
+    }
 
 
     @Override
@@ -56,7 +73,7 @@ public class User implements Runnable {
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            //handleIdentification();
+            handleIdentification();
             //handleRequests();
         } catch (IOException e) {
             e.printStackTrace();
