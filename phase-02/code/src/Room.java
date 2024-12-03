@@ -31,4 +31,22 @@ public class Room {
         }
     }
 
+    public void removeUser(User user) {
+        synchronized (users) {
+            users.remove(user);
+            if (users.isEmpty()) {
+                //Delete the room if its empty
+                Server.rooms.remove(roomName);
+            } else if (user.equals(moderator)) {
+                Iterator<User> it = users.iterator();
+                if (it.hasNext()) {
+                    moderator = it.next();
+                    moderator.sendMessage("info You are now the moderator of this room.");
+                }
+            }
+        }
+    }
+
+
+
 }
