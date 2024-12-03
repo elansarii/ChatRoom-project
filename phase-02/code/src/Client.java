@@ -33,7 +33,7 @@ public class Client {
                 try {
                     String serverMessage;
                     while ((serverMessage = in.readLine()) != null) {
-                        System.out.println("[" + timestamp() + "yup] " + serverMessage);
+                        System.out.println("[" + timestamp() + "yuup] " + serverMessage);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
