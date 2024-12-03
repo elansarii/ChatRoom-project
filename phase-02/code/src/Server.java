@@ -60,7 +60,6 @@ public class Server {
             Socket clientSocket = serverSocket.accept();
             System.out.println("Client connected: " + clientSocket.getInetAddress());
             User user = new User(clientSocket);
-            addUser(user);
             new Thread(user).start();
         }
     }

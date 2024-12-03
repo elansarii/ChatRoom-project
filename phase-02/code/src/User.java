@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.nio.Buffer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
@@ -15,6 +16,7 @@ public class User implements Runnable {
     private String ticket;
     private String pseudonym;
     private Room room;
+
 
     public User(Socket socket) {
         this.socket = socket;
@@ -36,10 +38,10 @@ public class User implements Runnable {
         out.println(message);
     }
 
-    private void saveTicket(String ticket) {
+    private void saveTicket(String pseudonym,String  ticket) {
         try {
             PrintWriter writer = new PrintWriter(TICKET_FILE, "UTF-8");
-            writer.println(ticket);
+            writer.println(pseudonym + "," + ticket);
 
             writer.close();
         } catch (IOException e) {
@@ -48,21 +50,27 @@ public class User implements Runnable {
     }
 
     private void handleIdentification() throws IOException {
-        sendMessage("Please enter your ticket or pseudonym:");
+        sendMessage("1.Pseudonym 2. Ticket:");
 
-        String input = in.readLine();
+        String choice = in.readLine();
 
-        if (Server.findTicket(input) == null) {
-            String currentTicket = generate(Server.getCounter());
-            Server.tickets.put(input, currentTicket);
+        if (choice.equals("1")){
+            sendMessage("Enter your pseudonym: ");
+            pseudonym = in.readLine();
+            ticket = generate(Server.getCounter());
+            Server.tickets.put(pseudonym, ticket);
             Server.addUser(this);
-            saveTicket(ticket);
+            Server.tickets.put(pseudonym, ticket);
+            saveTicket(pseudonym,ticket);
             sendMessage("Ticket generated: " + ticket + " and associated with pseudonym: " + pseudonym);
-
-        } else {
-            pseudonym = Server.getUserByTicket(ticket).getPseudonym();
+        } else if (choice.equals("2")){
+            ticket = new BufferedReader(new FileReader(TICKET_FILE)).readLine();
+            String[] parts =ticket.split(",");
+            pseudonym = parts[0];
+            ticket = parts[1];
+            Server.tickets.put(pseudonym, ticket);
+            Server.addUser(this);
             sendMessage("Welcome back, " + pseudonym);
-
         }
     }
 
