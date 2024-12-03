@@ -14,20 +14,6 @@ public class Server {
         return String.valueOf(ticketCounter++);
     }
 
-//    public static synchronized void loadTickets() {
-//        try (BufferedReader br = new BufferedReader(new FileReader(User.TICKET_FILE))) {
-//            String line;
-//            while ((line = br.readLine()) != null) {
-//                String[] parts = line.split(" ");
-//                if (parts.length == 2) {
-//                    tickets.put(parts[0], parts[1]);
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
 
     public static String findTicket(String pseudonym) {
         return tickets.get(pseudonym);
@@ -54,12 +40,12 @@ public class Server {
     public static void main(String[] args) throws IOException, InterruptedException {
         ServerSocket serverSocket = new ServerSocket(PORT);
         System.out.println("Server started on port " + PORT);
-       // loadTickets();
 
         while (true) {
             Socket clientSocket = serverSocket.accept();
             System.out.println("Client connected: " + clientSocket.getInetAddress());
             User user = new User(clientSocket);
+            addUser(user);
             new Thread(user).start();
         }
     }

@@ -28,6 +28,7 @@ public class Room {
                 user.sendMessage("info You are the moderator of this room.");
             }
             users.add(user);
+            user.sendMessage("info " +" have joined room: " + roomName);
         }
     }
 
@@ -35,7 +36,6 @@ public class Room {
         synchronized (users) {
             users.remove(user);
             if (users.isEmpty()) {
-                //Delete the room if its empty
                 Server.rooms.remove(roomName);
             } else if (user.equals(moderator)) {
                 Iterator<User> it = users.iterator();

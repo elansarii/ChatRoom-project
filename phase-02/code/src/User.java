@@ -17,7 +17,6 @@ public class User implements Runnable {
     private String pseudonym;
     private Room room;
 
-
     public User(Socket socket) {
         this.socket = socket;
     }
@@ -38,39 +37,75 @@ public class User implements Runnable {
         out.println(message);
     }
 
-    private void saveTicket(String pseudonym,String  ticket) {
+    private void saveTicket(String pseudonym, String ticket) {
         try {
             PrintWriter writer = new PrintWriter(TICKET_FILE, "UTF-8");
             writer.println(pseudonym + "," + ticket);
-
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void handleIdentification() throws IOException {
-        sendMessage("1.Pseudonym 2. Ticket:");
+    private void handleRequests() throws IOException {
+        String request;
+        while ((request = in.readLine()) != null) {
+            String[] parts = request.split(" ");
+            if (parts.length == 0) {
+                continue;
+            }
+            String command = parts[0];
+            switch (command) {
+                case "pseudo":
+                    pseudonym = parts[1];
+                    ticket = generate(Server.getCounter());
+                    Server.tickets.put(ticket,pseudonym);
+                    saveTicket(pseudonym, ticket);
+                    sendMessage("Ticket generated: " + ticket + " and associated with pseudonym: " + pseudonym);
+                    break;
 
-        String choice = in.readLine();
+                case "ticket":
+                    ticket = parts[1];
+                    pseudonym = Server.findTicket(ticket);
+                    if (pseudonym != null) {
+                        Server.tickets.put(pseudonym, ticket);
+                        sendMessage("Welcome back, " + pseudonym);
+                    } else {
+                        sendMessage("Invalid ticket.");
+                    }
+                    break;
 
-        if (choice.equals("1")){
-            sendMessage("Enter your pseudonym: ");
-            pseudonym = in.readLine();
-            ticket = generate(Server.getCounter());
-            Server.tickets.put(pseudonym, ticket);
-            Server.addUser(this);
-            Server.tickets.put(pseudonym, ticket);
-            saveTicket(pseudonym,ticket);
-            sendMessage("Ticket generated: " + ticket + " and associated with pseudonym: " + pseudonym);
-        } else if (choice.equals("2")){
-            ticket = new BufferedReader(new FileReader(TICKET_FILE)).readLine();
-            String[] parts =ticket.split(",");
-            pseudonym = parts[0];
-            ticket = parts[1];
-            Server.tickets.put(pseudonym, ticket);
-            Server.addUser(this);
-            sendMessage("Welcome back, " + pseudonym);
+                case "join":
+                    if (parts.length == 2) {
+                        String roomName = parts[1];
+                        Room room = Server.getRoom(roomName);
+                        room.addUser(this);
+                        this.room = room;
+                        sendMessage("info You have joined room: " + roomName);
+                    }
+                    break;
+
+                case "leave":
+                    if (room != null) {
+                        room.removeUser(this);
+                        sendMessage("info You have left the room.");
+                    }
+                    break;
+                case "kick":
+                case "send":
+                case "direct":
+
+                case "quit":
+                    if (room != null) {
+                        room.removeUser(this);
+                    }
+                    Server.removeUser(this);
+                    sendMessage("info Goodbye!");
+                    socket.close();
+                    return;
+                default:
+                    sendMessage("info Unknown command: " + command);
+            }
         }
     }
 
@@ -81,8 +116,7 @@ public class User implements Runnable {
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            handleIdentification();
-            //handleRequests();
+            handleRequests();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
