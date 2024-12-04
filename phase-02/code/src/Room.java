@@ -47,6 +47,25 @@ public class Room {
         }
     }
 
+    public void broadcast(String message) {
+        synchronized (users) {
+            for (User user : users) {
+                user.sendMessage(message);
+            }
+        }
+    }
+    public void kickUser(String pseudonym, String reason) {
+        synchronized (users) {
+            for (User user : users) {
+                if (user.getPseudonym().equals(pseudonym)) {
+                    users.remove(user);
+                    user.sendMessage("info You have been kicked from the room: " + roomName + " Reason: " + reason);
+                    break;
+                }
+            }
+        }
+    }
+
 
 
 }

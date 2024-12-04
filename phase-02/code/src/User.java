@@ -81,19 +81,48 @@ public class User implements Runnable {
                         Room room = Server.getRoom(roomName);
                         room.addUser(this);
                         this.room = room;
-                        sendMessage("info You have joined room: " + roomName);
                     }
                     break;
 
                 case "leave":
                     if (room != null) {
                         room.removeUser(this);
-                        sendMessage("info You have left the room.");
+                        room.broadcast("info "+this+" has left the room.");
                     }
                     break;
                 case "kick":
+                    if (parts.length == 4) {
+                        String roomName = parts[1];
+                        String userToKick = parts[2];
+                        String reason = parts[3];
+                        Room room = Server.getRoom(roomName);
+                        if (room != null && room.getModerator().equals(this)) {
+                            room.kickUser(userToKick, reason);
+                        } else {
+                            sendMessage("error You are not the moderator or the room does not exist.");
+                        }
+                    }
+                    break;
                 case "send":
+                    if (parts.length >= 3) {
+                        String roomName = parts[1];
+                        String message = request.substring(request.indexOf(parts[2]));
+                        Room room = Server.getRoom(roomName);
+                        if (room != null) {
+                            room.broadcast("[" + timestamp() + "] " + pseudonym + ": " + message);
+                        }
+                    }
+                    break;
                 case "direct":
+                    if (parts.length >= 3) {
+                        String pseudonym = parts[1];
+                        String message = request.substring(request.indexOf(parts[2]));
+                        User user = Server.getUserByTicket(Server.findTicket(pseudonym));
+                        if (user != null) {
+                            user.sendMessage("[" + timestamp() + "] " + this.pseudonym + ": " + message);
+                        }
+                    }
+                    break;
 
                 case "quit":
                     if (room != null) {
