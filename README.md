@@ -28,6 +28,7 @@ In the process configuring and performing the following:
 1. Learning new tools
 2. Getting used to shell scripting syntax
 3. Using git in the CLI
+4. coming up with a design for the chat server
  
 ## Issues
  
