@@ -1,21 +1,21 @@
 import java.io.*;
 import java.net.*;
-import java.nio.Buffer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.*;
 import java.time.*;
 import java.time.format.*;
+import java.util.*;
 
 public class User implements Runnable {
-    //private static final long RATE_LIMIT = 250; // 250 ms
     public static final String TICKET_FILE = "ticket.txt";
+    private static final long RATE_LIMIT = 250; // 250 ms
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
     private String ticket;
     private String pseudonym;
     private Room room;
+    private long lastRequestTime = 0;
 
     public User(Socket socket) {
         this.socket = socket;
@@ -50,6 +50,13 @@ public class User implements Runnable {
     private void handleRequests() throws IOException {
         String request;
         while ((request = in.readLine()) != null) {
+            long currentTime = System.currentTimeMillis();
+            if (currentTime - lastRequestTime < RATE_LIMIT) {
+                sendMessage("error Rate limit exceeded. Please wait before sending another request.");
+                continue;
+            }
+            lastRequestTime = currentTime;
+
             String[] parts = request.split(" ");
             if (parts.length == 0) {
                 continue;
@@ -59,7 +66,7 @@ public class User implements Runnable {
                 case "pseudo":
                     pseudonym = parts[1];
                     ticket = generate(Server.getCounter());
-                    Server.tickets.put(ticket,pseudonym);
+                    Server.tickets.put(ticket, pseudonym);
                     saveTicket(pseudonym, ticket);
                     sendMessage("Ticket generated: " + ticket + " and associated with pseudonym: " + pseudonym);
                     break;
@@ -87,9 +94,10 @@ public class User implements Runnable {
                 case "leave":
                     if (room != null) {
                         room.removeUser(this);
-                        room.broadcast("info "+this+" has left the room.");
+                        room.broadcast("info " + this + " has left the room.");
                     }
                     break;
+
                 case "kick":
                     if (parts.length == 4) {
                         String roomName = parts[1];
@@ -103,6 +111,7 @@ public class User implements Runnable {
                         }
                     }
                     break;
+
                 case "send":
                     if (parts.length >= 3) {
                         String roomName = parts[1];
@@ -113,6 +122,7 @@ public class User implements Runnable {
                         }
                     }
                     break;
+
                 case "direct":
                     if (parts.length >= 3) {
                         String pseudonym = parts[1];
@@ -132,12 +142,12 @@ public class User implements Runnable {
                     sendMessage("info Goodbye!");
                     socket.close();
                     return;
+
                 default:
                     sendMessage("info Unknown command: " + command);
             }
         }
     }
-
 
     @Override
     public void run() {
