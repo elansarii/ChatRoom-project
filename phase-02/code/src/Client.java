@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.*;
 import java.time.*;
 import java.time.format.*;
-// I am Abdulrahman
+
 public class Client {
     private static final String SERVER_IP = "127.0.0.1";
     private static final int SERVER_PORT = 13337;
@@ -28,23 +28,26 @@ public class Client {
         out = new PrintWriter(socket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    String serverMessage;
-                    while ((serverMessage = in.readLine()) != null) {
-                        System.out.println("[" + timestamp() + "] " + serverMessage);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+        new Thread(() -> {
+            try {
+                String serverMessage;
+                while ((serverMessage = in.readLine()) != null) {
+                    System.out.println("[" + timestamp() + "] " + serverMessage);
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }).start();
 
-        BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
-        while (true) {
-            String command = userInput.readLine();
-            out.println(command);
-        }
+        new Thread(() -> {
+            try (BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in))) {
+                String command;
+                while ((command = userInput.readLine()) != null) {
+                    out.println(command);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }
