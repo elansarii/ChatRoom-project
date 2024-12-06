@@ -46,6 +46,18 @@ public class User implements Runnable {
             e.printStackTrace();
         }
     }
+    private void printMenu() {
+        StringBuilder menu = new StringBuilder("info Connected users:\n");
+        for (User user : Server.getUsers().values()) {
+            menu.append(user.getPseudonym()).append("\n");
+        }
+        menu.append("Available rooms:\n");
+        for (String roomName : Server.rooms.keySet()) {
+            menu.append(roomName).append("\n");
+        }
+        sendMessage(menu.toString());
+    }
+
 
     private void handleRequests() throws IOException {
         String request;
@@ -69,6 +81,7 @@ public class User implements Runnable {
                     Server.tickets.put(ticket, pseudonym);
                     saveTicket(pseudonym, ticket);
                     sendMessage("Ticket generated: " + ticket + " and associated with pseudonym: " + pseudonym);
+                    printMenu();
                     break;
 
                 case "ticket":
@@ -80,6 +93,7 @@ public class User implements Runnable {
                     } else {
                         sendMessage("Invalid ticket.");
                     }
+                    printMenu();
                     break;
 
                 case "join":
@@ -140,12 +154,29 @@ public class User implements Runnable {
                     }
                     Server.removeUser(this);
                     sendMessage("info Goodbye!");
-                    socket.close();
+                    closeConnection();
+                    System.exit(0);
                     return;
 
                 default:
                     sendMessage("info Unknown command: " + command);
             }
+        }
+    }
+
+    private void closeConnection() {
+        try {
+            if (in != null) {
+                in.close();
+            }
+            if (out != null) {
+                out.close();
+            }
+            if (socket != null) {
+                socket.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

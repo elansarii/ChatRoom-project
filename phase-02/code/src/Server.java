@@ -35,7 +35,17 @@ public class Server {
         return rooms.computeIfAbsent(roomName, Room::new);
     }
 
+    public static Map<String, User> getUsers() {
+        return users;
+    }
 
+    public static Map<String, Room> getRooms() {
+        return rooms;
+    }
+
+    public static Map<String, String> getTickets() {
+        return tickets;
+    }
 
     public static void main(String[] args) throws IOException, InterruptedException {
         ServerSocket serverSocket = new ServerSocket(PORT);
