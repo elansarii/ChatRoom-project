@@ -58,6 +58,14 @@ public class User implements Runnable {
         sendMessage(menu.toString());
     }
 
+    private void listUsers() {
+        StringBuilder users = new StringBuilder("info Connected users:\n");
+        for (User user : room.getUsers()) {
+            users.append(user.getPseudonym()).append("\n");
+        }
+        sendMessage(users.toString());
+    }
+
 
     private void handleRequests() throws IOException {
         String request;
@@ -102,13 +110,17 @@ public class User implements Runnable {
                         Room room = Server.getRoom(roomName);
                         room.addUser(this);
                         this.room = room;
+                        room.broadcast("info " + this + " has joined the room.");
+                        listUsers();
                     }
                     break;
 
                 case "leave":
-                    if (room != null) {
+                    if(parts.length == 2) {
+                        String roomName = parts[1];
+                        Room room = Server.getRoom(roomName);
                         room.removeUser(this);
-                        room.broadcast("info " + this + " has left the room.");
+                        room.broadcast("info " + this + " has left "+roomName);
                     }
                     break;
 
@@ -120,6 +132,7 @@ public class User implements Runnable {
                         Room room = Server.getRoom(roomName);
                         if (room != null && room.getModerator().equals(this)) {
                             room.kickUser(userToKick, reason);
+                            room.broadcast("info " + userToKick + " has been kicked from the room for " + reason);
                         } else {
                             sendMessage("error You are not the moderator or the room does not exist.");
                         }
