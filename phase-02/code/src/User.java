@@ -72,7 +72,7 @@ public class User implements Runnable {
         while ((request = in.readLine()) != null) {
             long currentTime = System.currentTimeMillis();
             if (currentTime - lastRequestTime < RATE_LIMIT) {
-                sendMessage("error Rate limit exceeded. Please wait before sending another request.");
+                sendMessage("[" + timestamp() + "] " +"error Rate limit exceeded. Please wait before sending another request.");
                 continue;
             }
             lastRequestTime = currentTime;
@@ -88,7 +88,7 @@ public class User implements Runnable {
                     ticket = generate(Server.getCounter());
                     Server.tickets.put(ticket, pseudonym);
                     saveTicket(pseudonym, ticket);
-                    sendMessage("Ticket generated: " + ticket + " and associated with pseudonym: " + pseudonym);
+                    sendMessage("[" + timestamp() + "] " +"Ticket generated: " + ticket + " and associated with pseudonym: " + pseudonym);
                     printMenu();
                     break;
 
@@ -97,9 +97,9 @@ public class User implements Runnable {
                     pseudonym = Server.findTicket(ticket);
                     if (pseudonym != null) {
                         Server.tickets.put(pseudonym, ticket);
-                        sendMessage("Welcome back, " + pseudonym);
+                        sendMessage("[" + timestamp() + "] " +"Welcome back, " + pseudonym);
                     } else {
-                        sendMessage("Invalid ticket.");
+                        sendMessage("[" + timestamp() + "] " +"Invalid ticket.");
                     }
                     printMenu();
                     break;
@@ -110,7 +110,7 @@ public class User implements Runnable {
                         Room room = Server.getRoom(roomName);
                         room.addUser(this);
                         this.room = room;
-                        room.broadcast("info " + this + " has joined the room.");
+                        room.broadcast("[" + timestamp() + "] " +"info " + this + " has joined the room.");
                         listUsers();
                     }
                     break;
@@ -120,7 +120,7 @@ public class User implements Runnable {
                         String roomName = parts[1];
                         Room room = Server.getRoom(roomName);
                         room.removeUser(this);
-                        room.broadcast("info " + this + " has left "+roomName);
+                        room.broadcast("[" + timestamp() + "] " +"info " + this + " has left "+roomName);
                     }
                     break;
 
@@ -132,7 +132,7 @@ public class User implements Runnable {
                         Room room = Server.getRoom(roomName);
                         if (room != null && room.getModerator().equals(this)) {
                             room.kickUser(userToKick, reason);
-                            room.broadcast("info " + userToKick + " has been kicked from the room for " + reason);
+                            room.broadcast("[" + timestamp() + "] " +"info " + userToKick + " has been kicked by"+room.getModerator()+" from the room for " + reason);
                         } else {
                             sendMessage("error You are not the moderator or the room does not exist.");
                         }
@@ -166,13 +166,13 @@ public class User implements Runnable {
                         room.removeUser(this);
                     }
                     Server.removeUser(this);
-                    sendMessage("info Goodbye!");
+                    sendMessage("[" + timestamp() + "] " +"info Goodbye!");
                     closeConnection();
                     System.exit(0);
                     return;
 
                 default:
-                    sendMessage("info Unknown command: " + command);
+                    sendMessage("[" + timestamp() + "] " +"info Unknown command: " + command);
             }
         }
     }
