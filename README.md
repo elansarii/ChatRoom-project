@@ -33,7 +33,7 @@ In the process configuring and performing the following:
 ## Issues
  
 1. Installing Fedora server
-2. 
+2. The ticket only gets saved when the client terminates
  
 ## Contributions
  
