@@ -36,6 +36,7 @@ public class User implements Runnable {
     void sendMessage(String message) {
         out.println(message);
     }
+//due to an unknown error, the file only is saved after the client is terminated
 
     private void saveTicket(String pseudonym, String ticket) {
         try {
@@ -88,7 +89,7 @@ public class User implements Runnable {
                     ticket = generate(Server.getCounter());
                     Server.tickets.put(ticket, pseudonym);
                     saveTicket(pseudonym, ticket);
-                    sendMessage("[" + timestamp() + "] " +"Ticket generated: " + ticket + " and associated with pseudonym: " + pseudonym);
+                    sendMessage("[" + timestamp() + "] "+ " Welcome to the chat server " + pseudonym);
                     printMenu();
                     break;
 
@@ -132,7 +133,7 @@ public class User implements Runnable {
                         Room room = Server.getRoom(roomName);
                         if (room != null && room.getModerator().equals(this)) {
                             room.kickUser(userToKick, reason);
-                            room.broadcast("[" + timestamp() + "] " +"info " + userToKick + " has been kicked by"+room.getModerator()+" from the room for " + reason);
+                            room.broadcast("[" + timestamp() + "] " +"info " + userToKick + " has been kicked by"+ room.getModerator()+" from the room for " + reason);
                         } else {
                             sendMessage("error You are not the moderator or the room does not exist.");
                         }
