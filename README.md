@@ -14,7 +14,9 @@ In the process configuring and performing the following:
 - Web server
 - Client website
  
-[Mermaid](https://mermaid.live) can be used to create diagrams.
+## Phase 2
+
+We designed and implemented a chat room server that allows users to create and join multiple rooms simultaneously. The server includes user-friendly commands to ensure interactions are simple and intuitive. To enhance reliability and efficiency, we utilized synchronized methods along with lists and maps for managing users and rooms effectively.
  
 ## Team
  
@@ -22,18 +24,23 @@ In the process configuring and performing the following:
 - Khaled Qarawi [kq2203776@student.qu.edu.qa]
 - Faisal Almalk [fa2203280@student.qu.edu.qa]
 - Abdulrahman Shabban [as2204435@student.qu.edu.qa]
- 
-## Challenges
- 
-1. Learning new tools
-2. Getting used to shell scripting syntax
-3. Using git in the CLI
-4. coming up with a design for the chat server
- 
-## Issues
- 
-1. Installing Fedora server
-2. The ticket only gets saved when the client terminates
+
+### Challenges
+
+1. Adapting to new tools and technologies.
+2. Mastering the syntax and logic of shell scripting.
+3. Effectively using Git in the command line interface (CLI).
+4. Designing a scalable and efficient architecture for the chat server.
+5. Understanding the application's architecture for Phase 2 and how it integrates with other components.
+
+### Issues
+
+1. Difficulty in installing and configuring the Fedora Server.
+2. Client tickets are saved only upon termination instead of during runtime.
+3. Occasionally, the full list of connected users fails to display.
+4. The program runs correctly only in the IDE console, not in standalone environments ie. terminal.
+
+
  
 ## Contributions
  
