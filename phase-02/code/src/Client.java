@@ -2,6 +2,7 @@ import java.io.*;
 import java.net.*;
 import java.time.*;
 import java.time.format.*;
+import java.util.Scanner; // Added for user input
 
 /**
  * The Client class represents a client that connects to a server, sends commands, and receives messages.
@@ -29,14 +30,15 @@ public class Client {
      * @param args command-line arguments (not used)
      */
     public static void main(String[] args) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            System.out.print("Enter server IP: ");
-            SERVER_IP = reader.readLine().trim();
+        Scanner scanner = new Scanner(System.in); // Using Scanner instead of BufferedReader
+        System.out.print("Enter server IP: ");
+        SERVER_IP = scanner.nextLine().trim();
 
-            System.out.print("Enter server port: ");
-            SERVER_PORT = Integer.parseInt(reader.readLine().trim());
+        System.out.print("Enter server port: ");
+        SERVER_PORT = Integer.parseInt(scanner.nextLine().trim());
 
-            Client client = new Client();
+        Client client = new Client();
+        try {
             client.start();
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,13 +69,16 @@ public class Client {
 
         // Thread to handle user input and send commands to the server
         new Thread(() -> {
-            try (BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in))) {
-                String command;
-                while ((command = userInput.readLine()) != null) {
-                    out.println(command);
+            Scanner userInput = new Scanner(System.in);
+            try {
+                while (true) {
+                    if (userInput.hasNextLine()) {
+                        String command = userInput.nextLine();
+                        out.println(command);
+                    }
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+            } finally {
+                userInput.close();
             }
         }).start();
     }
