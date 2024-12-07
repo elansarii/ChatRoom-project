@@ -64,6 +64,7 @@ We designed and implemented a chat room server that allows users to create and j
 | khaled | 2024-11-30 | Added the script for fetch-info.sh |
 | khaled | 2024-11-30 | Added the script for server.sh |
 | khaled | 2024-11-30 | Added the script for client.sh |
+| khaled | 2024-12-07 | Added documentation for scripts and edited code in client phase 2 |
 
 
 
