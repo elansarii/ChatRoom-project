@@ -8,11 +8,11 @@ import java.time.format.*;
  * It establishes a connection to the server, handles input/output streams, and manages user interactions.
  */
 public class Client {
-    private static final String SERVER_IP = "127.0.0.1"; // The IP address of the server
-    private static final int SERVER_PORT = 13337; // The port number of the server
-    private Socket socket; // The socket for connecting to the server
-    private PrintWriter out; // The output stream for sending messages to the server
-    private BufferedReader in; // The input stream for receiving messages from the server
+    private static String SERVER_IP;  // The IP address of the server
+    private static int SERVER_PORT;   // The port number of the server
+    private Socket socket;            // The socket for connecting to the server
+    private PrintWriter out;          // The output stream for sending messages to the server
+    private BufferedReader in;        // The input stream for receiving messages from the server
 
     /**
      * Returns the current timestamp in ISO_LOCAL_DATE_TIME format.
@@ -29,7 +29,13 @@ public class Client {
      * @param args command-line arguments (not used)
      */
     public static void main(String[] args) {
-        try {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.print("Enter server IP: ");
+            SERVER_IP = reader.readLine().trim();
+
+            System.out.print("Enter server port: ");
+            SERVER_PORT = Integer.parseInt(reader.readLine().trim());
+
             Client client = new Client();
             client.start();
         } catch (IOException e) {
